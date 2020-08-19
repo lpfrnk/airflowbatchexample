@@ -4,8 +4,10 @@ import calendar
 import airflow
 from airflow import models
 from airflow.operators import bash_operator
+from airflow.operators.bash_operator import BashOperator
 from airflow.operators import PythonOperator
 from airflow.operators import BranchPythonOperator
+
 from airflow.contrib.operators.bigquery_operator import BigQueryOperator
 from airflow.contrib.operators.gcs_to_bq import GoogleCloudStorageToBigQueryOperator
 from airflow.contrib.operators.gcs_to_gcs import GoogleCloudStorageToGoogleCloudStorageOperator
@@ -28,7 +30,7 @@ bq_target_table =  Variable.get("gcp_project") + ".warehouselab.sales_stg"
 
 default_args = {
     'owner': 'samples',
-    'depends_on_past': False,
+    'depends_on_past': True,
     'email': [''],
     'email_on_failure': False,
     'email_on_retry': False,
@@ -57,7 +59,6 @@ with airflow.DAG(
         'catchup=False',
         default_args=default_args,
         schedule_interval=datetime.timedelta(days=1)) as dag:
-
 
     sql1 = """ 
                 CREATE or REPLACE TABLE `""" + Variable.get("gcp_project") + """`.warehouselab.sales (
@@ -191,4 +192,12 @@ with airflow.DAG(
         dag=dag
     )
 
-build_sales_table_stg >> build_sales_table >> build_control_table >> loadsat >> loadsun >> loadmon >> loadtue >> loadwed >> loadthur >> loadfri
+    create_dataset = BashOperator(
+        dag=dag,
+        task_id='create_dataset',
+        bash_command="bq --location=US mk -d --default_table_expiration 3600 --description \"dataset for airflow lab\" warehouselab",
+        email_on_failure=True,
+        trigger_rule=TriggerRule.ALL_SUCCESS
+    )
+
+create_dataset >> build_sales_table_stg >> build_sales_table >> build_control_table >> loadsat >> loadsun >> loadmon >> loadtue >> loadwed >> loadthur >> loadfri
