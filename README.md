@@ -36,10 +36,10 @@ This assumes that sendgrid is setup as documented.
 
 gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://us-east1-mscpoc2-c81c123c-bucket/dags
 
-6. Run the DAG named Setup_Batch_Example1. This will create a dataset named warehouse lab.
+6. Run the DAG named Setup_Batch_Example1. This will create a dataset named warehouselab.
 
-7. Run the main DAG named Batch_Example1. This will now examine the control, then look at the inbound folder for files and when complete set the control table to DONE.
+7. Run the main DAG named Batch_Example1. This will now examine the control table, then look at the inbound folder for files and when complete sets the control_table to DONE.
 
-8. To rerun. Reset the control table with the DAG named Reset_Batch_Control_table_Example1. and copy the files into the inbound directory. IE: gsutil cp *.csv gs://airflowbatchexample/inbound/
+8. To rerun. Reset the control_table with the DAG named Reset_Batch_Control_table_Example1. and copy the files into the inbound directory. IE: gsutil cp *.csv gs://airflowbatchexample/inbound/
 
 
