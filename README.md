@@ -36,7 +36,7 @@ This assumes that sendgrid is setup as documented.
 
 gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://YOUR-AIRFLOW-DIRECTORY/dags
 
-6. Run the DAG named Setup_Batch_Example1. This will create a dataset named warehouselab.
+6. Run the DAG named Setup_Batch_Example1. This will create a dataset named warehouselab and create 3 tables (sales, sales_stg,control_table). When this is complete, the control table is loaded with 7 rows of data.
 
 7. Run the main DAG named Batch_Example1. This will now examine the control table, then look at the inbound folder for files and when complete sets the control_table to DONE.
 
