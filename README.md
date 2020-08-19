@@ -34,7 +34,7 @@ This assumes that sendgrid is setup as documented.
 
 5. Copy the DAG py files to the Airflow DAG directory
 
-gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://us-east1-mscpoc2-c81c123c-bucket/dags
+gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://YOUR-AIRFLOW-DIRECTORY/dags
 
 6. Run the DAG named Setup_Batch_Example1. This will create a dataset named warehouselab.
 
