@@ -58,7 +58,8 @@ with airflow.DAG(
         'Setup_Batch_Example1',
         'catchup=False',
         default_args=default_args,
-        schedule_interval=datetime.timedelta(days=1)) as dag:
+        schedule_interval=None,
+        catchup=False) as dag:
 
     sql1 = """ 
                 CREATE or REPLACE TABLE `""" + Variable.get("gcp_project") + """`.warehouselab.sales (
