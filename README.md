@@ -44,4 +44,4 @@ gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://YOUR-AIRFLOW-DIRECTORY
 
 Overview
 
-<img width=“964” alt=“overview” src=“https://github.com/lpfrnk/airflowbatchexample/blob/master/airflowtobigquery.jpg”>
+https://github.com/lpfrnk/airflowbatchexample/blob/master/airflowtobigquery.jpg
