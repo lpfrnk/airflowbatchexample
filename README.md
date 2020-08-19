@@ -13,7 +13,7 @@ requests ==2.24.0
 
 When you save, this will take some time for the packages to install ~10min.
 
-=================================================================================================
+========================================================================================
 
 1. Clone repository to local cloudshell environment
 git clone https://github.com/lpfrnk/airflowbatchexample.git
