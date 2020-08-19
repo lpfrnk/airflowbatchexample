@@ -42,4 +42,6 @@ gsutil cp /home/lpfrnk/airflowbatchexample/dags/*.py gs://YOUR-AIRFLOW-DIRECTORY
 
 8. To rerun. Reset the control_table with the DAG named Reset_Batch_Control_table_Example1. and copy the files into the inbound directory. IE: gsutil cp *.csv gs://airflowbatchexample/inbound/
 
+Overview
 
+<img width=“964” alt=“overview” src=“https://github.com/lpfrnk/airflowbatchexample/blob/master/airflowtobigquery.jpg”>
